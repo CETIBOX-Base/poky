@@ -4,6 +4,10 @@ addtask make_scripts after do_prepare_recipe_sysroot before do_configure
 do_make_scripts[lockfiles] = "${TMPDIR}/kernel-scripts.lock"
 do_make_scripts[depends] += "virtual/kernel:do_shared_workdir"
 
+# Ensure one recipe isn't running do_make_scripts whilst another is using those
+# scripts in do_compile.
+do_compile[lockfiles] = "${TMPDIR}/kernel-scripts.lock"
+
 EXTRA_OEMAKE += "KERNEL_SRC=${STAGING_KERNEL_DIR}"
 
 MODULES_INSTALL_TARGET ?= "modules_install"
