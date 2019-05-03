@@ -18,7 +18,7 @@ BINUPV = "${@binutils_branch_version(d)}"
 
 UPSTREAM_CHECK_GITTAGREGEX = "binutils-(?P<pver>\d+_(\d_?)*)"
 
-SRCREV ?= "90276f15379d380761fc499da2ba24cfb3c12a94"
+SRCREV ?= "8efd17cb25686c51b9db6531ae2fbeb2e6ef2399"
 BINUTILS_GIT_URI ?= "git://sourceware.org/git/binutils-gdb.git;branch=binutils-${BINUPV}-branch;protocol=git"
 SRC_URI = "\
      ${BINUTILS_GIT_URI} \
@@ -35,6 +35,48 @@ SRC_URI = "\
      file://0013-fix-the-incorrect-assembling-for-ppc-wait-mnemonic.patch \
      file://0014-Detect-64-bit-MIPS-targets.patch \
      file://0015-sync-with-OE-libtool-changes.patch \
+     file://CVE-2017-17124.patch \
+     file://CVE-2017-14930.patch \
+     file://CVE-2017-14932.patch \
+     file://CVE-2017-14933_p1.patch \
+     file://CVE-2017-14933_p2.patch \
+     file://CVE-2017-14934.patch \
+     file://CVE-2017-14938.patch \
+     file://CVE-2017-14939.patch \
+     file://CVE-2017-14940.patch \
+     file://CVE-2017-15021.patch \
+     file://CVE-2017-15022.patch \
+     file://CVE-2017-15023.patch \
+     file://CVE-2017-15024.patch \
+     file://CVE-2017-15025.patch \
+     file://CVE-2017-15225.patch \
+     file://CVE-2017-15939.patch \
+     file://CVE-2017-15996.patch \
+     file://CVE-2017-16826.patch \
+     file://CVE-2017-16827.patch \
+     file://CVE-2017-16828_p1.patch \
+     file://CVE-2017-16828_p2.patch \
+     file://CVE-2017-16829.patch \
+     file://CVE-2017-16830.patch \
+     file://CVE-2017-16831.patch \
+     file://CVE-2017-16832.patch \
+     file://CVE-2017-17080.patch \
+     file://CVE-2017-17121.patch \
+     file://CVE-2017-17122.patch \
+     file://CVE-2017-17125.patch \
+     file://CVE-2017-17123.patch \
+     file://CVE-2018-10372.patch \
+     file://CVE-2018-10373.patch \
+     file://CVE-2018-10534.patch \
+     file://CVE-2018-10535.patch \
+     file://CVE-2018-13033.patch \
+     file://CVE-2018-6323.patch \
+     file://CVE-2018-6759.patch \
+     file://CVE-2018-7208.patch \
+     file://CVE-2018-7568_p1.patch \
+     file://CVE-2018-7568_p2.patch \
+     file://CVE-2018-7569.patch \
+     file://CVE-2018-7642.patch \
 "
 S  = "${WORKDIR}/git"
 

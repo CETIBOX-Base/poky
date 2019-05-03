@@ -2,7 +2,7 @@ inherit module-base kernel-module-split pkgconfig
 
 addtask make_scripts after do_prepare_recipe_sysroot before do_configure
 do_make_scripts[lockfiles] = "${TMPDIR}/kernel-scripts.lock"
-do_make_scripts[depends] += "virtual/kernel:do_shared_workdir"
+do_make_scripts[depends] += "virtual/kernel:do_shared_workdir openssl-native:do_populate_sysroot"
 
 # Ensure one recipe isn't running do_make_scripts whilst another is using those
 # scripts in do_compile.

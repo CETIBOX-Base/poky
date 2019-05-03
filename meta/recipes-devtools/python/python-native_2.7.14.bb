@@ -1,7 +1,7 @@
 require python.inc
 
 EXTRANATIVEPATH += "bzip2-native"
-DEPENDS = "openssl-native bzip2-replacement-native zlib-native readline-native sqlite3-native expat-native"
+DEPENDS = "openssl-native bzip2-replacement-native zlib-native readline-native sqlite3-native expat-native gdbm-native db-native"
 PR = "${INC_PR}.1"
 
 SRC_URI += "\
@@ -17,6 +17,7 @@ SRC_URI += "\
             file://builddir.patch \
             file://parallel-makeinst-create-bindir.patch \
             file://revert_use_of_sysconfigdata.patch \
+            file://fix-gc-alignment.patch \
            "
 
 S = "${WORKDIR}/Python-${PV}"
@@ -37,6 +38,12 @@ EXTRA_OEMAKE = '\
 
 do_configure_append() {
 	autoreconf --verbose --install --force --exclude=autopoint ../Python-${PV}/Modules/_ctypes/libffi
+}
+
+# Regenerate all of the generated files
+# This ensures that pgen and friends get created during the compile phase
+do_compile_prepend() {
+    oe_runmake regen-all
 }
 
 do_install() {
